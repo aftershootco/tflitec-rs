@@ -11,10 +11,16 @@ fn out_dir() -> PathBuf {
 }
 
 fn build_tflite_c<P: AsRef<Path>>(tf_src_path: P) -> PathBuf {
-    cmake::Config::new(tf_src_path)
-        .define("TFLITE_C_BUILD_SHARED_LIBS", "OFF")
-        // .define("CMAKE_OSX_ARCHITECTURES", "arm64")
-        .build()
+    if cfg!(target_arch = "aarch64") && cfg!(target_os = "macos") {
+        cmake::Config::new(tf_src_path)
+            .define("TFLITE_C_BUILD_SHARED_LIBS", "OFF")
+            .define("CMAKE_OSX_ARCHITECTURES", "arm64")
+            .build()
+    } else {
+        cmake::Config::new(tf_src_path)
+            .define("TFLITE_C_BUILD_SHARED_LIBS", "OFF")
+            .build()
+    }
 }
 
 fn link_libs_c<P: AsRef<Path>>(target_dir: P) {
