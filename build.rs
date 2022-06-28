@@ -50,20 +50,24 @@ fn link_libs_c<P: AsRef<Path>>(target_dir: P) {
 }
 
 fn main() {
-    #[cfg(not(target_os = "windows"))]{
-        println!("cargo:rustc-link-lib=static=farmhash");
-        println!("cargo:rustc-link-lib=static=ruy");
-        println!("cargo:rustc-link-lib=static=cpuinfo");
-        println!("cargo:rustc-link-lib=static=XNNPACK");
-        println!("cargo:rustc-link-lib=static=tensorflow-lite");
-        println!("cargo:rustc-link-lib=static=pthreadpool");
-        println!("cargo:rustc-link-lib=static=fft2d_fftsg");
-        println!("cargo:rustc-link-lib=static=flatbuffers");
-        println!("cargo:rustc-link-lib=static=clog");
-        println!("cargo:rustc-link-lib=static=fft2d_fftsg2d"); // println!("cargo:rustc-link-lib=tensorflowlite_c");
+    #[cfg(not(target_os = "windows"))]
+    {
+        #[cfg(feature = "build")]
+        {
+            println!("cargo:rustc-link-lib=static=farmhash");
+            println!("cargo:rustc-link-lib=static=ruy");
+            println!("cargo:rustc-link-lib=static=cpuinfo");
+            println!("cargo:rustc-link-lib=static=XNNPACK");
+            println!("cargo:rustc-link-lib=static=tensorflow-lite");
+            println!("cargo:rustc-link-lib=static=pthreadpool");
+            println!("cargo:rustc-link-lib=static=fft2d_fftsg");
+            println!("cargo:rustc-link-lib=static=flatbuffers");
+            println!("cargo:rustc-link-lib=static=clog");
+            println!("cargo:rustc-link-lib=static=fft2d_fftsg2d"); // println!("cargo:rustc-link-lib=tensorflowlite_c");
 
-        // println!("cargo:rustc-link-lib=static=tensorflowlite_c");
-        link_libs_c(build_tflite_c("tensorflow/tensorflow/lite/c"));
+            // println!("cargo:rustc-link-lib=static=tensorflowlite_c");
+            link_libs_c(build_tflite_c("tensorflow/tensorflow/lite/c"));
+        }
     }
     // panic!();
     let out_path = out_dir();
