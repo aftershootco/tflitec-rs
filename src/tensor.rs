@@ -1,8 +1,8 @@
 //! TensorFlow Lite input or output [`Tensor`] associated with an interpreter.
 use std::ffi::{c_void, CStr};
 
-use crate::bindings;
-use crate::bindings::*;
+use tflitec_sys::bindings;
+use tflitec_sys::bindings::*;
 use crate::{Error, ErrorKind, Result};
 use std::fmt::{Debug, Formatter};
 use std::marker::PhantomData;

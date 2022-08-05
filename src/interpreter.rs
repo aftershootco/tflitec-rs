@@ -2,7 +2,7 @@
 use std::ffi::c_void;
 use std::os::raw::c_int;
 
-use crate::bindings::*;
+use tflitec_sys::bindings::*;
 use crate::model::Model;
 use crate::tensor;
 use crate::tensor::Tensor;

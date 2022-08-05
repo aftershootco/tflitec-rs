@@ -9,7 +9,7 @@
 //! let model = Model::new(&format!("tests{}add.bin", MAIN_SEPARATOR))?;
 //! # Ok::<(), tflitec::Error>(())
 //! ```
-use crate::bindings::{
+use tflitec_sys::bindings::{
     TfLiteModel, TfLiteModelCreate, TfLiteModelCreateFromFile, TfLiteModelDelete,
 };
 use crate::{Error, ErrorKind, Result};

@@ -14,14 +14,11 @@ categories = ["api-bindings", "science"]
 name = "tflitec"
 
 [dependencies]
-tflitec-sys = {git = "https://github.com/aftershootco/tflite_sys.git",optional=true}
-
-[build-dependencies]
-bindgen = "0.59.1"
-cmake = "0.1.48"
+tflitec_sys = {git = "https://github.com/aftershootco/tflitec-rs.git"}
 
 [features]
-build = ["dep:tflitec-sys"]
+build = ["tflitec_sys/build"]
+bindgen = ["tflitec_sys/bindgen"]
 xnnpack = []
 xnnpack_qu8 = ["xnnpack"]
 xnnpack_qs8 = ["xnnpack"]
