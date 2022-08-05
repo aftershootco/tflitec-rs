@@ -14,7 +14,7 @@ categories = ["api-bindings", "science"]
 name = "tflitec"
 
 [dependencies]
-tflitec_sys = {git = "https://github.com/aftershootco/tflitec-rs.git"}
+tflitec_sys = {git = "https://github.com/aftershootco/tflite-sys.git"}
 
 [features]
 build = ["tflitec_sys/build"]
